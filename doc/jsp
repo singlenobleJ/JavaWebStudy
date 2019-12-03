@@ -1,0 +1,38 @@
+//======================JSP基础==========================
+1.JSP指令
+page
+<%@page "属性一"="属性一值,.....",...%>
+include
+taglib
+
+2.JSP注释
+<!-- --> HTML注释，客户端可见
+<%-- --%> jsp注释，客户端不可见
+//单行注释 /*多行注释*/
+
+3.JSP代码
+jsp脚本 翻译到jsp_service()方法中，生成java代码
+<%脚本内容%>
+jsp声明 翻译到jsp_servlet类中，生成成员变量和成员方法
+<%!声明%>
+jsp表达式 翻译到jsp_service()方法中，生成java代码
+<%=表达式(不带分号)%>
+html标签等，都是翻译到jsp_service()中，拼接字符串的方式打印出来
+
+4.JSP内置对象
+out、page、request、response、session、application、config、pageContext、exception
+
+5.JSP声明周期
+请求->不存在则翻译jsp文件为jsp_servlet源java文件，生成jsp_servlet class字节码文件
+创建对象，调用init方法，执行jsp_service()方法处理请求
+请求->存在则直接调用jsp_service()方法
+每个jsp对应一个jsp_servlet对象 单实例，web容器关闭，jsp_servlet对象销毁
+
+6.session生命周期
+一次会话结束(所有页面都关闭了)
+过期了
+主动销毁 invalidate()
+
+7.请求转发与重定向
+转发是服务器行为，不改变url和request对象
+重定向是客户端行为，改变了url和生成了新的request对象
